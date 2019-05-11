@@ -1,0 +1,54 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeContent.ViewModels.EditKnowledgeContentViewModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@{
+    ViewData["Title"] = Localizer["Edit Content"];
+}
+
+<div class="page-header">@ViewData["Title"]</div>
+<hr />
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <label asp-for="Content" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <textarea asp-for="Content" class="form-control"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Comment" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <textarea asp-for="Comment" class="form-control comment-control"></textarea>
+            <span asp-validation-for="Comment" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="ConceptId" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="form-inline">
+                <select asp-for="ConceptId" asp-items="Model.CategoriesWithConcepts" class="form-control" id="selectSource">
+                    <option value="0">@SharedLocalizer["- choose -"]</option>
+                </select>
+                <a asp-action="Create" asp-controller="KnowledgeConcept" class="btn btn-outline-success ml-1">+</a>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Sources" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="form-inline">
+                <select asp-for="SourceId" asp-items="@(new SelectList(Model.Sources,"Id","Name"))" class="form-control">
+                    <option value="0">@SharedLocalizer["- choose -"]</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group d-flex justify-content-between">
+        <input type="submit" value="@SharedLocalizer["Save changes"]" class="btn btn-outline-primary" />
+        <a asp-action="Index">@SharedLocalizer["Go back"]</a>
+    </div>
+</form>
+
+
+

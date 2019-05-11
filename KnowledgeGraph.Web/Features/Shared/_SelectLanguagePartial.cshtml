@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocalizationOptions
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocalizationOptions.Value.SupportedUICultures.Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName }).ToList();
+    var languageShortcut = requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName.ToLower() == "pl" ? "EN" : "PL";
+
+}
+
+@*<div title="@Localizer["Wybierz język"] @requestCulture?.Provider?.GetType().Name">
+        <form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="culture" class="mr-1">@Localizer["Language"]:</label>
+                    <select class="form-control" name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems"></select>
+                    <button type="submit" class="ml-1 btn btn-outline-primary form-control">@Localizer["Save"]</button>
+              </div>
+                </div>
+
+    </form>
+    </div>*@
+<div class="ml-sm-2">
+<form id="selectLanguage" asp-controller="Home" asp-action="SetLanguageSimple" asp-route-returnUrl="@Context.Request.Path">
+    <input type="hidden" name="culture" value="@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName.ToUpper()" />
+    <button type="submit" class="btn btn-sm btn-outline-dark">@languageShortcut</button>
+</form>
+</div>

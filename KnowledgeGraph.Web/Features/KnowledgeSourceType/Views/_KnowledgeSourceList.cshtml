@@ -1,0 +1,31 @@
+﻿@model IEnumerable<KnowledgeGraph.Web.Features.KnowledgeSourceType.ViewModels.KnowledgeSourceForSourceTypeViewModel>
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@inject IViewLocalizer Localizer
+
+@if (Model.HasAnyItems())
+{
+    <div class="mt-5 text-muted">
+        @Localizer["Source list"]:
+    </div>
+    <table class="table table-hover table-light">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <span class="h5">@Html.DisplayFor(modelItem => item.Name)</span>
+                    </td>
+                    <td>
+                        @Html.ActionLink(@SharedLocalizer["Details"], "Details", "KnowledgeSource", new { id = item.Id }, new { @class = "btn btn-sm btn-outline-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-5  text-muted">
+        @Localizer["No Sources for this Source Type."]
+    </div>
+}

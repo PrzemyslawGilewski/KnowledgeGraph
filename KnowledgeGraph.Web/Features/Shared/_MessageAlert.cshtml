@@ -1,0 +1,14 @@
+﻿@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success  alert-dismissible  fade show m-4">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@TempData["Success"].ToString()</strong>
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger  alert-dismissible  fade show m-4">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@TempData["Error"].ToString()</strong>
+    </div>
+}

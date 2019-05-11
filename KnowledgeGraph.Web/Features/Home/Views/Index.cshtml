@@ -1,0 +1,56 @@
+﻿@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Knowledge Graph"];
+}
+@inject Microsoft.AspNetCore.Identity.SignInManager<KnowledgeGraph.Data.ApplicationUser> SignInManager
+
+<div class="home-header text-center jumbotron mt-5">
+    <div class="home-header-text">@Localizer["Welcome to KnowledgeGraph"]</div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="btn btn-outline-primary btn-lg mt-5" asp-controller="KnowledgeContent" asp-action="Create">@Localizer["Create new Content"]</a>
+    }
+    else
+    {
+        <a class="btn btn-outline-primary btn-lg mt-5" asp-area="Identity" asp-page="/Account/Login">@Localizer["Log in"]</a>
+    }
+</div>
+<div class="row">
+    <div class="col-12 col-md-4 mt-3 mt-md-0">
+        <div class="home-box">
+            <h5>@Localizer["Purpose of the application"]</h5>
+            <p>
+                @Localizer["This application was developed to help you better organise and search the knowledge you are interested to keep."]
+            </p>
+            <p>
+                @Localizer["You can fastly jump from Concepts and Contents to Source, from Source to Authors and so on."]
+            </p>
+        </div>
+    </div>
+    <div class="col-12 col-md-4  mt-3 mt-md-0">
+        <div class="home-box">
+            <h5>@Localizer["How to use the application?"]</h5>
+            <p>
+                @Localizer["The central idea is the Concept with its Contents .You can add Categories to have better organisation of Concepts."]
+            </p>
+            <p>
+                @Localizer["Every Content can have one Source and every Source can have one Source Type and one or many Authors associated with it."]
+            </p>
+        </div>
+    </div>
+    <div class="col-12 col-md-4  mt-3 mt-md-0">
+        <div class="home-box">
+            <h5>@Localizer["Future improvements"]</h5>
+            <p>
+                @Localizer["We plan to allow grouping of Concepts in hierarchy and build more robust Editor for Content input."]
+            </p>
+            <p>
+                @Localizer["The next improvement will be the possibility to build Learning Path based on the Concepts you provided."]
+            </p>
+            <p>
+                @Localizer["Stay tuned!"]
+            </p>
+        </div>
+    </div>
+</div>

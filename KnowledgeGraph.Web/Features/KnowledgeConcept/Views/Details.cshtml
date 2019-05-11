@@ -1,0 +1,45 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeConcept.ViewModels.DetailsKnowledgeConceptViewModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@{
+    ViewData["Title"] = Localizer["Concept details"];
+}
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        <div class="details-label">@SharedLocalizer["Concept"]</div>
+        <div class="details-name"> @Model.Name</div>
+        @if (!string.IsNullOrEmpty(Model.Comment))
+        {
+            <div class="details-comment-label">@SharedLocalizer["Comment"]</div>
+            <div class="details-comment">@Model.Comment</div>
+        }
+
+    </div>
+    <div class="col-12  col-md-4 d-flex align-items-end flex-column">
+        <a asp-action="Index" class="py-2">@SharedLocalizer["Go back to list"]</a>
+        <div class="mt-2 mt-md-5">
+            <a asp-action="Create" asp-controller="KnowledgeContent" asp-route-id="@Model.Id" class="btn btn-outline-primary">@Localizer["Create new Content"]</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary ml-2">@SharedLocalizer["Edit"]</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger ml-2">@SharedLocalizer["Delete"]</a>
+        </div>
+    </div>
+</div>
+
+<partial name="_MessageAlert" />
+
+@if (Model.Contents == null || Model.Contents.Count() == 0)
+{
+    <div class="mt-3">
+        @Localizer["There is no Content in this Concept."]
+    </div>
+}
+else
+{
+    foreach (var contentItem in Model.Contents)
+    {
+        <partial name="../KnowledgeContent/Views/_KnowledgeContentDisplayer" model="contentItem" />
+    }
+}
+
+

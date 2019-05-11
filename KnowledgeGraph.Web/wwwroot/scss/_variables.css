@@ -1,0 +1,139 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all; }
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+  font-family: Calibri; }
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px; } }
+
+.border-top {
+  border-top: 1px solid #e5e5e5; }
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05); }
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit; }
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+  /* Vertically center the text there */ }
+
+textarea.form-control {
+  height: 10em; }
+
+textarea.comment-control {
+  height: 8em; }
+
+body {
+  background-color: #fcfcfc; }
+
+.hidden {
+  visibility: hidden; }
+
+.knowledge-content-box {
+  border: 1px solid #b8b8b8;
+  border-radius: 10px;
+  margin: 20px 0; }
+
+.knowledge-content-text {
+  padding: 10px; }
+
+.knowledge-content-aside {
+  padding: 10px;
+  float: right;
+  background-color: #f8f8f8;
+  border-radius: 0 10px 0 10px;
+  width: 200px;
+  font-size: .8rem;
+  margin: 0 0 10px 10px;
+  border-left: 1px solid #b8b8b8;
+  border-bottom: 1px solid #b8b8b8; }
+  .knowledge-content-aside dt {
+    font-weight: 400;
+    color: #555555; }
+
+.clearfix {
+  clear: both; }
+
+.knowledge-content-comment {
+  background-color: #f8f8f8;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  border-top: 1px solid #b8b8b8; }
+
+.knowledge-concept-box {
+  border: 1px solid #b8b8b8;
+  border-radius: 10px;
+  width: 300px;
+  margin: 10px 10px 0 0; }
+
+.knowledge-concept-box-header {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 10px; }
+
+.knowledge-concept-box-content {
+  padding: 10px 10px 10px 0; }
+  .knowledge-concept-box-content ul {
+    list-style: none; }
+
+.details-name {
+  font-size: 3em; }
+
+.details-label {
+  font-size: 1.5em;
+  color: #6c757d; }
+
+.details-comment-label {
+  color: #6c757d;
+  font-size: .8em; }
+
+.details-comment {
+  font-size: .8em; }
+
+.details-date-label {
+  color: #6c757d;
+  font-size: .8em; }
+
+.details-date {
+  font-size: .8em; }
+
+.page-header {
+  font-size: 1.8em;
+  font-weight: 500; }
+
+.home-text p {
+  font-size: .9em; }
+
+.home-text h5 {
+  font-size: 1.1em; }

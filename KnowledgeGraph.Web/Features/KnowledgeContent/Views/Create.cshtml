@@ -1,0 +1,60 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeContent.ViewModels.CreateKnowledgeContentViewModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@{
+    ViewData["Title"] = Localizer["Create new Content"];
+}
+@if (Model.Attached)
+{
+    <div class="page-header">@Localizer["Create new Content for"] <i>@Model.ConceptName</i></div>
+}
+else
+{
+    <div class="page-header">@ViewData["Title"]</div>
+}
+<hr />
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <label asp-for="Content" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <textarea asp-for="Content" class="form-control" id="textAreaContent"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Comment" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <textarea asp-for="Comment" class="form-control comment-control" id="textAreaComment"></textarea>
+            <span asp-validation-for="Comment" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="ConceptId" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="form-inline">
+                <select asp-for="ConceptId" asp-items="Model.CategoriesWithConcepts" class="form-control" id="selectSource">
+                    <option value="0">@SharedLocalizer["- choose -"]</option>
+                </select>
+                <a asp-action="Create" asp-controller="KnowledgeConcept" class="btn btn-outline-success ml-1">+</a>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="SourceId" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="form-inline">
+                <select asp-for="SourceId" asp-items="@(new SelectList(Model.Sources,"Id","Name"))" class="form-control" id="selectSource">
+                    <option value="0">@SharedLocalizer["- choose -"]</option>
+                </select>
+                <a asp-action="Create" asp-controller="KnowledgeSource" class="btn btn-outline-success ml-1">+</a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5 form-group d-flex justify-content-between">
+        <input type="submit" value="@SharedLocalizer["Create"]" class="btn btn-outline-primary" />
+        <a asp-action="Index">@SharedLocalizer["Go back to list"]</a>
+    </div>
+</form>
+
+

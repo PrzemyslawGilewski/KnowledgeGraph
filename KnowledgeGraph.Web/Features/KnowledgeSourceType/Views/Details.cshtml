@@ -1,0 +1,39 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeSourceType.ViewModels.DetailsKnowledgeSourceTypeViewModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+@{
+    ViewData["Title"] = Localizer["Source Type details"];
+}
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        <div class="details-label">@SharedLocalizer["Source type"]</div>
+        <div class="details-name"> @Model.Name</div>
+        @if (!string.IsNullOrEmpty(Model.Comment))
+        {
+            <div class="details-comment-label">@SharedLocalizer["Comment"]</div>
+            <div class="details-comment">@Model.Comment</div>
+        }
+        <div class="d-flex">
+            <div>
+                <div class="details-date-label mt-2">@SharedLocalizer["Creation time"]</div>
+                <div class="details-date">@Model.CreationTime.Format()</div>
+            </div>
+            <div class="ml-5">
+                <div class="details-date-label mt-2">@SharedLocalizer["Last modification time"]</div>
+                <div class="details-date">@Model.LastModificationTime.Format()</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12  col-md-4 d-flex align-items-end flex-column">
+        <a asp-action="Index" class="py-2">@SharedLocalizer["Go back to list"]</a>
+        <div class="mt-2 mt-md-5">
+            <a asp-action="Create" asp-controller="KnowledgeSource" asp-route-sourceTypeId="@Model.Id" class="btn btn-outline-primary mr-3">@Localizer["Create new Source"]</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary mr-3">@SharedLocalizer["Edit"]</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">@SharedLocalizer["Delete"]</a>
+        </div>
+    </div>
+</div>
+
+<partial name="_KnowledgeSourceList.cshtml" model="Model.Sources" />

@@ -1,0 +1,30 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeConcept.ViewModels.IndexKnowledgeConceptViewModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@{
+    ViewData["Title"] = Localizer["Concepts"];
+}
+<div class="d-flex justify-content-between align-items-start">
+    <div class="page-header">@ViewData["Title"]</div>
+    <a asp-action="Create" class="btn btn-outline-primary">@SharedLocalizer["Create"]</a>
+</div>
+<hr />
+<partial name="_MessageAlert" />
+@if (Model.Categories.Any(category => category.KnowledgeConcepts.HasAnyItems()))
+{
+    <div class="d-flex flex-wrap justify-content-center">
+
+        @foreach (var categoryItem in Model.Categories)
+        {
+            <partial name="_KnowledgeCategoryWithConcepts" model="categoryItem" />
+        }
+    </div>
+}
+else
+{
+    <div>
+        <span class="text-secondary">@Localizer["You have not created any Concepts yet."]</span>
+    </div>
+}
+
+

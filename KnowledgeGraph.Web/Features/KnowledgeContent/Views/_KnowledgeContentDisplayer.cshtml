@@ -1,0 +1,55 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeContent.ViewModels.KnowledgeContentViewModel
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@{
+    Ganss.XSS.HtmlSanitizer HtmlSanitizer = new Ganss.XSS.HtmlSanitizer();
+}
+
+
+<div class="knowledge-content-box">
+    <div class="knowledge-content-aside">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreationDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastModificationDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastModificationDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Source)
+            </dt>
+            <dd>
+                @if (Model.Source != null)
+                {
+                    <a asp-action="Details" asp-controller="KnowledgeSource" asp-route-id="@Model.Source.Id">@Html.DisplayFor(model => model.Source.Name)</a>
+                }
+                else
+                {
+                    <span>brak</span>
+                }
+            </dd>
+        </dl>
+        <div>
+            <a asp-action="Edit" asp-controller="KnowledgeContent" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary">@SharedLocalizer["Edit"]</a>
+            <a asp-action="Delete" asp-controller="KnowledgeContent" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-danger">@SharedLocalizer["Delete"]</a>
+        </div>
+    </div>
+    <div class="knowledge-content-text text-justify">
+        @Model.Content.Replace("\n", "<br/>")
+    </div>
+    <div class="knowledge-content-comment clearfix">
+        @if (!string.IsNullOrEmpty(Model.Comment))
+        {
+            Model.Comment.Replace("\n", "<br/>");
+        }
+    </div>
+</div>
+
+
+
+

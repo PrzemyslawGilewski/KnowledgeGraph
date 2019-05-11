@@ -1,0 +1,27 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeConcept.ViewModels.KnowledgeCategoryWithConceptsViewModel
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+@if (Model.KnowledgeConcepts.HasAnyItems())
+{
+    <div class="knowledge-concept-box">
+        <div class="knowledge-concept-box-header">
+            @if (Model.Category != null)
+            {
+                <a asp-action="Details" asp-controller="KnowledgeCategory" asp-route-id="@Model.Category.Id">@Model.Category.Name</a>
+
+            }
+            else
+            {
+                <span>@SharedLocalizer["No Category"]</span>
+            }
+        </div>
+        <div class="knowledge-concept-box-content">
+            <ul>
+                @foreach (var concept in Model.KnowledgeConcepts)
+                {
+                    <li><a asp-action="Details" asp-route-id="@concept.Id">@concept.Name</a><span class="badge badge-pill badge-light ml-1">@concept.ContentCount</span></li>
+                }
+            </ul>
+        </div>
+    </div>
+}

@@ -1,0 +1,26 @@
+﻿@model KnowledgeGraph.Web.Features.KnowledgeAuthor.ViewModels.IndexKnowledgeAuthorViewModel
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+@{
+    ViewData["Title"] = Localizer["Author list"];
+}
+<div class="d-flex justify-content-between align-items-start">
+    <div class="page-header">@ViewData["Title"]</div>
+    <a asp-action="Create" class="btn btn-outline-primary">@SharedLocalizer["Create"]</a>
+</div>
+<hr />
+<partial name="_MessageAlert" />
+@if (Model.Authors.HasAnyItems())
+{
+    <partial name="_KnowledgeAuthorList" model="Model.Authors" />
+}
+else
+{
+    <div class="mt-5  text-muted">
+        @Localizer["No Author defined."]
+    </div>
+}
+@section Scripts{
+    <script src="~/js/table-action-buttons.js"></script>
+}

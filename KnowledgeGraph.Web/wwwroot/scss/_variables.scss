@@ -1,0 +1,9 @@
+﻿//-------------------- VARIABLES ------------------
+
+$gray-color-value: 243;
+$knowledge-gray: rgb($gray-color-value, $gray-color-value, $gray-color-value);
+$knowledge-gray-darken: darken( $knowledge-gray, 25% );
+$knowledge-text-gray: #6c757d;
+$border-radius: 10px;
+$knowledge-text-small: .8rem;
+$standard-padding: 10px;

@@ -1,0 +1,25 @@
+﻿@import "_variables.scss";
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+    .home-header-text {
+        font-size: 2.5em;
+    }
+
+    .knowledge-concept-box {
+        width: 40%;
+    }
+
+    .home-box {
+        padding: $standard-padding;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .knowledge-concept-box {
+        width: 30%;
+    }
+}
